@@ -1,0 +1,39 @@
+<configuration debug="true">
+
+    <!-- this is the app local data area so that we do not need storage permission to write there -->
+    <property name="LOG_HOME" value="${DATA_DIR}" />
+
+    <!-- Create a logcat appender -->
+    <appender name="logcat" class="ch.qos.logback.classic.android.LogcatAppender">
+        <encoder>
+            <pattern>%msg</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/app.txt</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/app.%i.txt</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>2</maxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>500KB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MMM-dd HH:mm:ss.SSS} %t %r %logger{15} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="main" level="DEBUG">
+        <appender-ref ref="logcat" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="logcat" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>
