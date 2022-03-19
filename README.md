@@ -63,7 +63,8 @@
 # File storage location(File Appender)
     data/data/PACKAGE_NAME/files/app.txt
 
-# Runtime permission
+# Runtime permissions
+
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
