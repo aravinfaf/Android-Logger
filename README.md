@@ -1,6 +1,7 @@
 # Android-Logger
 
   //Logger Dependencies in build.gradle(Module:app)
+  
     implementation 'org.slf4j:slf4j-api:1.7.25'
     implementation 'com.github.tony19:logback-android:2.0.0'
     
